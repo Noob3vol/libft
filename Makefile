@@ -28,7 +28,7 @@ S_OUT	=	ft_putchar.c \
 		ft_putendl.c \
 		ft_putnbr.c \
 		ft_putstr_non_printable.c \
-		ft_print_memory.c
+		ft_print_memory.c 
 
 S_MEM	= 	ft_memset.c \
 		ft_bzero.c \
@@ -36,7 +36,8 @@ S_MEM	= 	ft_memset.c \
 		ft_memccpy.c \
 		ft_memmove.c \
 		ft_memchr.c \
-		ft_memcmp.c
+		ft_memcmp.c \
+		ft_calloc.c 
 
 S_STR	=	ft_strlen.c \
 		ft_strchr.c \
@@ -46,12 +47,11 @@ S_STR	=	ft_strlen.c \
 		ft_strlcat.c \
 		ft_strnstr.c \
 		ft_strtrim.c \
-		ft_calloc.c \
 		ft_strdup.c \
 		ft_substr.c \
 		ft_strjoin.c \
 		ft_split.c \
-		ft_strmapi.c
+		ft_strmapi.c 
 
 S_CTYPE = 	ft_isalpha.c \
 		ft_isdigit.c \
@@ -64,29 +64,41 @@ S_CTYPE = 	ft_isalpha.c \
 S_STD	=	ft_atoi.c \
 		ft_itoa.c 
 
-S_LST =		ft_lstnew.c 
+S_LST =		ft_lstnew.c \
 		ft_lstadd_front.c \
 		ft_lstsize.c \
 		ft_lstlast.c \
 		ft_lstadd_back.c \
 		ft_lstdelone.c \
 		ft_lstclear.c \
-		ft_lstiter.c \
-		ft_lstmap.c
+		ft_lstmap.c \
+		ft_lstiter.c 
 
 HFILE = $(addprefix $(HEADER), /$(addsuffix .h, $(basename $(NAME))))
 
 #Compile
 CC = clang
-OPTION = -I $(HEADER) -c
+HFLAG = -I $(HEADER)
 DEBUG = -g3 -fsanitize=address
-FLAG = -Wall -Werror -Wextra
+WFLAG = -Wall -Werror -Wextra
 
 #Auto
-OBJECT = $(SRC:%.c=%.o)
-BONUS_OBJ = $(BON:%.c=%.o)
-SRCS = $(addprefix $(PATH_SRC)/, $(SRC))
-BONUS = $(addprefix $(PATH_BON)/, $(BON))
+SRC = $(S_OUT) \
+      $(S_LST) \
+      $(S_STD) \
+      $(S_MEM) \
+      $(S_STR) \
+      $(S_CTYPE)
+
+
+SRCS =	$(addprefix $(D_OUT)/, $(S_OUT)) \
+	$(addprefix $(D_LST)/, $(S_LST)) \
+	$(addprefix $(D_STD)/, $(S_STD)) \
+	$(addprefix $(D_MEM)/, $(S_MEM)) \
+	$(addprefix $(D_STR)/, $(S_STR)) \
+	$(addprefix $(D_CTYPE)/, $(S_CTYPE))
+
+OBJECT = $(SRC:.c=.o) 
 
 
 all: $(NAME)
@@ -96,12 +108,13 @@ $(NAME): $(OBJECT)
 	ranlib $(NAME)
 
 $(OBJECT) : $(SRCS) $(HFILE)
-	$(CC) $(FLAG) $(OPTION) $(SRCS)
+	$(CC) $(WFLAG) $(HFLAG) -c $(SRCS)
 
-bonus:
-	$(CC) $(FLAG) $(OPTION) $(SRCS) $(BONUS) -DBONUS
-	ar rc $(NAME) $(OBJECT) $(BONUS_OBJ)
-	ranlib $(NAME)
+test: $(SRCS)
+	$(CC) -o test $(WFLAG) $(HFLAG) $(SRCS)
+	
+debug: $(OBJECT)
+	$(CC) -o debug $(DFLAG) $(WFLAG) $(HFLAG) $(SRCS)
 
 clean:
 	rm -f $(OBJECT) $(BONUS_OBJ)

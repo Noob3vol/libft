@@ -1,5 +1,4 @@
 #include <unistd.h>
-#include "outlib.h"
 
 static void	ft_printhex(unsigned char c)
 {
@@ -12,11 +11,6 @@ void	ft_putstr_non_printable(char *str)
 {
 	unsigned char c;
 
-	if (!str)
-	{
-		ft_putendl("Erreur str est NULL");
-		return ;
-	}
 	while(*str)
 	{
 		c = (unsigned char)*str;

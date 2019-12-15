@@ -87,7 +87,6 @@ void	ft_putchar(char c);
 void	ft_putstr(char *str);
 void	ft_putendl(char *str);
 void	ft_putnbr(int nbr);
-void	ft_atoi(char *str);
 void	ft_putstr_non_printable(char *str);
 void	ft_print_memory(void *addr, int size);
 
@@ -97,6 +96,10 @@ void	ft_print_memory(void *addr, int size);
 
 void	ft_print_wordlist(char **wordlist);
 void	ft_print_iarray(int **iarray, int size);
+/*
+**	Tab manipulation (char **)
+*/
+int	ft_tabadd_back(char ***tab, char *str);
 
 /*
 **	Linked list 101
