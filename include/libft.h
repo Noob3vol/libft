@@ -12,14 +12,7 @@
 
 #ifndef LIBFT_H
 # define LIBFT_H
-# define ABS(x) ((x) < 0 ? -x : x)
 # include <string.h>
-# define PUTCHAR(x) ft_putchar_fd((x), 1)
-# define PUTSTR(x) ft_putstr_fd((x), 1)
-# define PUTENDL(x) ft_putendl_fd((x), 1)
-# define PUTNBR(x) ft_putnbr_fd((x), 1)
-# define DSTR(x) ft_putstr_fd((#x " = "), 1); ft_putendl(x)
-# define DNBR(x) ft_putstr_fd((#x " = "), 1); ft_putnbr(x); ft_putchar('\n');
 
 /*
 **	Fonction memoire brut
@@ -31,16 +24,16 @@ void					*ft_memccpy(void *dest, const void *src, int c,
 	size_t n);
 void					*ft_memmove(void *dest, const void *src, size_t len);
 void					*ft_memchr(const void *s, int c, size_t n);
-int						ft_memcmp(const void *s1, const void *s2, size_t n);
+int					ft_memcmp(const void *s1, const void *s2, size_t n);
 
 /*
 **	charactere processing
 */
-int						ft_isalpha(int c);
-int						ft_isdigit(int c);
-int						ft_isalnum(int c);
-int						ft_isascii(int c);
-int						ft_isprint(int c);
+int					ft_isalpha(int c);
+int					ft_isdigit(int c);
+int					ft_isalnum(int c);
+int					ft_isascii(int c);
+int					ft_isprint(int c);
 char					ft_toupper(int c);
 char					ft_tolower(int c);
 
@@ -50,7 +43,7 @@ char					ft_tolower(int c);
 size_t					ft_strlen(const char *s);
 char					*ft_strchr(const char *s, int c);
 char					*ft_strrchr(const char *s, int c);
-int						ft_strncmp(const char *s1, const char *s2, size_t n);
+int					ft_strncmp(const char *s1, const char *s2, size_t n);
 char					*ft_strnstr(const char *haystack, const char *needle,
 	size_t len);
 
@@ -76,7 +69,7 @@ char					*ft_strmapi(char const *s,
 /*
 ** 	Transtypage
 */
-int						ft_atoi(const char *str);
+int					ft_atoi(const char *str);
 char					*ft_itoa(int n);
 
 /*
@@ -88,9 +81,26 @@ void					ft_putendl_fd(char *s, int fd);
 void					ft_putnbr_fd(int n, int fd);
 
 /*
+**	print simple data (char, int, char * -o [], void *)
+*/
+void	ft_putchar(char c);
+void	ft_putstr(char *str);
+void	ft_putendl(char *str);
+void	ft_putnbr(int nbr);
+void	ft_atoi(char *str);
+void	ft_putstr_non_printable(char *str);
+void	ft_print_memory(void *addr, int size);
+
+/*
+**	print table (char**, int *, char *, void *)
+*/
+
+void	ft_print_wordlist(char **wordlist);
+void	ft_print_iarray(int **iarray, int size);
+
+/*
 **	Linked list 101
 */
-# ifdef BONUS
 
 typedef struct s_list	t_list;
 struct					s_list
@@ -109,8 +119,6 @@ void					ft_lstclear(t_list **lst, void (*del)(void *));
 void					ft_lstiter(t_list *lst, void (*f)(void *));
 t_list					*ft_lstmap(t_list *lst,
 	void *(*f)(void *), void (*del)(void *));
-
-# endif
 
 /*
 **	char		*ft_strcpy(char *dest, char *src);
@@ -138,4 +146,5 @@ t_list					*ft_lstmap(t_list *lst,
 **	const char	*ft_strstr(const char *haystack, const char *needle);
 **	int			ft_atoi_base(char *str, char *base);
 */
+
 #endif
