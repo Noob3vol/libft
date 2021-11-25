@@ -6,7 +6,7 @@
 /*   By: iguidado <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/17 20:53:53 by iguidado          #+#    #+#             */
-/*   Updated: 2019/11/18 10:06:28 by iguidado         ###   ########.fr       */
+/*   Updated: 2020/06/23 17:57:36 by iguidado         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,13 +54,12 @@ char		*ft_itoa(int n)
 **	{
 **		ft_putnbr(ft_nbrlen_itoa(-1));
 **
-**	int i = -21;
-**	while (i < -20)
-**	{
-**		ft_putendl(ft_itoa(-2147483648));
-**		i++;
-**	}
-**
-**	return (0);
+**		int i = -21;
+**		while (i < -20)
+**		{
+**			ft_putendl(ft_itoa(-2147483648));
+**			i++;
+**		}
+**		return (0);
 **	}
 */

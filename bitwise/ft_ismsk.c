@@ -1,27 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstnew.c                                        :+:      :+:    :+:   */
+/*   ft_ismsk.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: iguidado <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: iguidado <iguidado@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/11/18 11:10:07 by iguidado          #+#    #+#             */
-/*   Updated: 2019/11/25 18:51:58 by iguidado         ###   ########.fr       */
+/*   Created: 2020/04/14 10:00:10 by iguidado          #+#    #+#             */
+/*   Updated: 2020/04/14 21:48:02 by iguidado         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-#include <stdlib.h>
 
-t_list	*ft_lstnew(void *content)
+char	ft_ismsk(char *ref, char *tokens)
 {
-	t_list *new;
+	char msk;
 
-	if (!(new = (t_list *)malloc(sizeof(t_list))))
-		return (NULL);
-	new->next = NULL;
-	new->content = NULL;
-	if (content)
-		new->content = (void *)content;
-	return (new);
+	msk = 0;
+	if (!tokens || !ref)
+		return (0);
+	while (*tokens)
+	{
+		msk |= ft_isbit(ref, *tokens);
+		tokens++;
+	}
+	return (msk);
 }

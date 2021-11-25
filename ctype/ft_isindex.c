@@ -1,27 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstnew.c                                        :+:      :+:    :+:   */
+/*   ft_isindex.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: iguidado <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/11/18 11:10:07 by iguidado          #+#    #+#             */
-/*   Updated: 2019/11/25 18:51:58 by iguidado         ###   ########.fr       */
+/*   Created: 2020/06/23 18:02:29 by iguidado          #+#    #+#             */
+/*   Updated: 2020/06/23 18:03:05 by iguidado         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-#include <stdlib.h>
 
-t_list	*ft_lstnew(void *content)
+int		ft_isindex(const char *set, char c)
 {
-	t_list *new;
+	int i;
 
-	if (!(new = (t_list *)malloc(sizeof(t_list))))
-		return (NULL);
-	new->next = NULL;
-	new->content = NULL;
-	if (content)
-		new->content = (void *)content;
-	return (new);
+	i = 0;
+	while (set[i])
+	{
+		if (set[i] == c)
+			return (i);
+	}
+	return (-1);
 }

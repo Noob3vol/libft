@@ -1,27 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstnew.c                                        :+:      :+:    :+:   */
+/*   ft_free_tab.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: iguidado <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/11/18 11:10:07 by iguidado          #+#    #+#             */
-/*   Updated: 2019/11/25 18:51:58 by iguidado         ###   ########.fr       */
+/*   Created: 2020/06/23 17:59:06 by iguidado          #+#    #+#             */
+/*   Updated: 2020/06/23 17:59:26 by iguidado         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 #include <stdlib.h>
 
-t_list	*ft_lstnew(void *content)
+void	ft_free_tab(char ***tab)
 {
-	t_list *new;
+	char	**tab_cpy;
+	int		i;
 
-	if (!(new = (t_list *)malloc(sizeof(t_list))))
-		return (NULL);
-	new->next = NULL;
-	new->content = NULL;
-	if (content)
-		new->content = (void *)content;
-	return (new);
+	tab_cpy = *tab;
+	i = 0;
+	while (tab_cpy[i])
+	{
+		free(tab_cpy[i]);
+		i++;
+	}
+	free(tab_cpy);
+	*tab = NULL;
 }

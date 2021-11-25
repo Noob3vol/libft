@@ -1,12 +1,12 @@
 # **************************************************************************** #
 #                                                                              #
 #                                                         :::      ::::::::    #
-#    makefile                                           :+:      :+:    :+:    #
+#    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
 #    By: iguidado <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/11/18 11:15:40 by iguidado          #+#    #+#              #
-#    Updated: 2019/11/26 18:19:47 by iguidado         ###   ########.fr        #
+#    Updated: 2020/12/03 14:53:30 by iguidado         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -21,13 +21,20 @@ D_STR	=	./string
 D_STD	=	./std
 D_CTYPE	=	./ctype
 D_LST	=	./list
+D_BIT	=	./bitwise
+D_TAB	=	./tab
 
 #Files
-S_OUT	=	ft_putchar.c \
-		ft_putstr.c \
-		ft_putendl.c \
-		ft_putnbr.c \
-		ft_putstr_non_printable.c \
+S_OUT	=	ft_putchar.c\
+		ft_putchar_fd.c\
+		ft_putstr.c\
+		ft_putstr_fd.c\
+		ft_putendl.c\
+		ft_putendl_fd.c\
+		ft_putnbr.c\
+		ft_putnbr_fd.c\
+		ft_putnbr_base.c\
+		ft_putstr_non_printable.c\
 		ft_print_memory.c 
 
 S_MEM	= 	ft_memset.c \
@@ -42,6 +49,7 @@ S_MEM	= 	ft_memset.c \
 S_STR	=	ft_strlen.c \
 		ft_strchr.c \
 		ft_strrchr.c \
+		ft_strindex.c \
 		ft_strncmp.c \
 		ft_strlcpy.c \
 		ft_strlcat.c \
@@ -53,7 +61,9 @@ S_STR	=	ft_strlen.c \
 		ft_split.c \
 		ft_strmapi.c 
 
-S_CTYPE = 	ft_isalpha.c \
+S_CTYPE =	ft_isindex.c\
+		ft_isset.c\
+		ft_isalpha.c \
 		ft_isdigit.c \
 		ft_isalnum.c \
 		ft_isascii.c \
@@ -62,6 +72,7 @@ S_CTYPE = 	ft_isalpha.c \
 		ft_tolower.c 
 
 S_STD	=	ft_atoi.c \
+		ft_atoi_base.c \
 		ft_itoa.c 
 
 S_LST =		ft_lstnew.c \
@@ -73,6 +84,12 @@ S_LST =		ft_lstnew.c \
 		ft_lstclear.c \
 		ft_lstmap.c \
 		ft_lstiter.c 
+
+S_TAB	=	ft_print_tab.c\
+			ft_free_tab.c
+
+S_BIT	=	ft_isbit.c\
+		ft_ismsk.c
 
 HFILE = $(addprefix $(HEADER), /$(addsuffix .h, $(basename $(NAME))))
 
@@ -88,7 +105,9 @@ SRC = $(S_OUT) \
       $(S_STD) \
       $(S_MEM) \
       $(S_STR) \
-      $(S_CTYPE)
+      $(S_CTYPE) \
+      $(S_TAB) \
+      $(S_BIT)
 
 
 SRCS =	$(addprefix $(D_OUT)/, $(S_OUT)) \
@@ -96,9 +115,11 @@ SRCS =	$(addprefix $(D_OUT)/, $(S_OUT)) \
 	$(addprefix $(D_STD)/, $(S_STD)) \
 	$(addprefix $(D_MEM)/, $(S_MEM)) \
 	$(addprefix $(D_STR)/, $(S_STR)) \
+	$(addprefix $(D_BIT)/, $(S_BIT)) \
+	$(addprefix $(D_TAB)/, $(S_TAB)) \
 	$(addprefix $(D_CTYPE)/, $(S_CTYPE))
 
-OBJECT = $(SRC:.c=.o) 
+OBJECT = $(SRCS:.c=.o) 
 
 
 all: $(NAME)
@@ -107,8 +128,8 @@ $(NAME): $(OBJECT)
 	ar rc $(NAME) $(OBJECT)
 	ranlib $(NAME)
 
-$(OBJECT) : $(SRCS) $(HFILE)
-	$(CC) $(WFLAG) $(HFLAG) -c $(SRCS)
+%.o : %.c $(HFILE)
+	$(CC) $(WFLAG) $(HFLAG) -o $@ -c $<
 
 test: $(SRCS)
 	$(CC) -o test $(WFLAG) $(HFLAG) $(SRCS)

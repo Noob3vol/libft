@@ -6,13 +6,14 @@
 /*   By: iguidado <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/19 14:38:45 by iguidado          #+#    #+#             */
-/*   Updated: 2019/11/26 18:18:58 by iguidado         ###   ########.fr       */
+/*   Updated: 2020/12/03 15:58:07 by iguidado         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef LIBFT_H
 # define LIBFT_H
 # include <string.h>
+# include <unistd.h>
 
 /*
 **	Fonction memoire brut
@@ -24,18 +25,21 @@ void					*ft_memccpy(void *dest, const void *src, int c,
 	size_t n);
 void					*ft_memmove(void *dest, const void *src, size_t len);
 void					*ft_memchr(const void *s, int c, size_t n);
-int					ft_memcmp(const void *s1, const void *s2, size_t n);
+int						ft_memcmp(const void *s1, const void *s2, size_t n);
 
 /*
 **	charactere processing
 */
-int					ft_isalpha(int c);
-int					ft_isdigit(int c);
-int					ft_isalnum(int c);
-int					ft_isascii(int c);
-int					ft_isprint(int c);
+int						ft_isalpha(int c);
+int						ft_isdigit(int c);
+int						ft_isalnum(int c);
+int						ft_isascii(int c);
+int						ft_isprint(int c);
 char					ft_toupper(int c);
 char					ft_tolower(int c);
+
+int						ft_isset(const char *set, char c);
+int						ft_isindex(const char *set, char c);
 
 /*
 **	String processing
@@ -43,9 +47,10 @@ char					ft_tolower(int c);
 size_t					ft_strlen(const char *s);
 char					*ft_strchr(const char *s, int c);
 char					*ft_strrchr(const char *s, int c);
-int					ft_strncmp(const char *s1, const char *s2, size_t n);
+int						ft_strncmp(const char *s1, const char *s2, size_t n);
 char					*ft_strnstr(const char *haystack, const char *needle,
 	size_t len);
+int						ft_strindex(const char *str, int c);
 
 /*
 **	String modification
@@ -69,7 +74,8 @@ char					*ft_strmapi(char const *s,
 /*
 ** 	Transtypage
 */
-int					ft_atoi(const char *str);
+int						ft_atoi(const char *str);
+int						ft_atoi_base(const char *str, char *base);
 char					*ft_itoa(int n);
 
 /*
@@ -83,23 +89,32 @@ void					ft_putnbr_fd(int n, int fd);
 /*
 **	print simple data (char, int, char * -o [], void *)
 */
-void	ft_putchar(char c);
-void	ft_putstr(char *str);
-void	ft_putendl(char *str);
-void	ft_putnbr(int nbr);
-void	ft_putstr_non_printable(char *str);
-void	ft_print_memory(void *addr, int size);
+void					ft_putchar(char c);
+void					ft_putstr(char *str);
+void					ft_putendl(char *str);
+void					ft_putnbr(int nbr);
+void					ft_putnbr_base(int nbr, char *base);
+void					ft_putstr_non_printable(char *str);
+void					ft_print_memory(void *addr, int size);
 
 /*
 **	print table (char**, int *, char *, void *)
 */
 
-void	ft_print_wordlist(char **wordlist);
-void	ft_print_iarray(int **iarray, int size);
+void					ft_print_tab(char **tab);
+void					ft_print_iarray(int **iarray, int size);
 /*
 **	Tab manipulation (char **)
 */
-int	ft_tabadd_back(char ***tab, char *str);
+void					ft_free_tab(char ***tab);
+int						ft_tabadd_back(char ***tab, char *str);
+
+/*
+**	BitWise
+*/
+
+char					ft_isbit(char *ref, char token);
+char					ft_ismsk(char *ref, char *tokens);
 
 /*
 **	Linked list 101
@@ -122,6 +137,11 @@ void					ft_lstclear(t_list **lst, void (*del)(void *));
 void					ft_lstiter(t_list *lst, void (*f)(void *));
 t_list					*ft_lstmap(t_list *lst,
 	void *(*f)(void *), void (*del)(void *));
+
+/*
+**	Math
+*/
+int						ft_abs(int nbr);
 
 /*
 **	char		*ft_strcpy(char *dest, char *src);
