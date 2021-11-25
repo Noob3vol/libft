@@ -6,7 +6,7 @@
 #    By: iguidado <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/11/18 11:15:40 by iguidado          #+#    #+#              #
-#    Updated: 2020/12/03 14:53:30 by iguidado         ###   ########.fr        #
+#    Updated: 2021/10/28 23:51:48 by iguidado         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -23,6 +23,9 @@ D_CTYPE	=	./ctype
 D_LST	=	./list
 D_BIT	=	./bitwise
 D_TAB	=	./tab
+D_TYPE	=	./type
+D_UTIL	=	./utils
+D_GNL	=	./gnl
 
 #Files
 S_OUT	=	ft_putchar.c\
@@ -35,6 +38,8 @@ S_OUT	=	ft_putchar.c\
 		ft_putnbr_fd.c\
 		ft_putnbr_base.c\
 		ft_putstr_non_printable.c\
+		ft_print_value.c\
+		ft_print_array.c\
 		ft_print_memory.c 
 
 S_MEM	= 	ft_memset.c \
@@ -51,6 +56,7 @@ S_STR	=	ft_strlen.c \
 		ft_strrchr.c \
 		ft_strindex.c \
 		ft_strncmp.c \
+		ft_strequ.c \
 		ft_strlcpy.c \
 		ft_strlcat.c \
 		ft_strnstr.c \
@@ -83,13 +89,22 @@ S_LST =		ft_lstnew.c \
 		ft_lstdelone.c \
 		ft_lstclear.c \
 		ft_lstmap.c \
+		ft_lstlen.c \
 		ft_lstiter.c 
 
 S_TAB	=	ft_print_tab.c\
 			ft_free_tab.c
 
+S_UTIL	=	ft_swap.c\
+		ft_median_of_3.c
+
 S_BIT	=	ft_isbit.c\
 		ft_ismsk.c
+
+S_TYPE	=	compute_int_max.c
+
+S_GNL	=	get_next_line.c\
+		get_next_line_utils.c
 
 HFILE = $(addprefix $(HEADER), /$(addsuffix .h, $(basename $(NAME))))
 
@@ -107,7 +122,10 @@ SRC = $(S_OUT) \
       $(S_STR) \
       $(S_CTYPE) \
       $(S_TAB) \
-      $(S_BIT)
+      $(S_TYPE) \
+      $(S_BIT) \
+      $(S_UTIL)\
+      $(S_GNL)
 
 
 SRCS =	$(addprefix $(D_OUT)/, $(S_OUT)) \
@@ -117,18 +135,21 @@ SRCS =	$(addprefix $(D_OUT)/, $(S_OUT)) \
 	$(addprefix $(D_STR)/, $(S_STR)) \
 	$(addprefix $(D_BIT)/, $(S_BIT)) \
 	$(addprefix $(D_TAB)/, $(S_TAB)) \
-	$(addprefix $(D_CTYPE)/, $(S_CTYPE))
+	$(addprefix $(D_TYPE)/, $(S_TYPE)) \
+	$(addprefix $(D_CTYPE)/, $(S_CTYPE)) \
+	$(addprefix $(D_UTIL)/, $(S_UTIL)) \
+	$(addprefix $(D_GNL)/, $(S_GNL))
 
 OBJECT = $(SRCS:.c=.o) 
 
 
 all: $(NAME)
 
-$(NAME): $(OBJECT)
+$(NAME): $(OBJECT) $(SRCS)
 	ar rc $(NAME) $(OBJECT)
 	ranlib $(NAME)
 
-%.o : %.c $(HFILE)
+%.o : %.c
 	$(CC) $(WFLAG) $(HFLAG) -o $@ -c $<
 
 test: $(SRCS)

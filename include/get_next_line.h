@@ -1,29 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_print_iarray.c                                  :+:      :+:    :+:   */
+/*   get_next_line.h                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: iguidado <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/02/07 22:40:26 by iguidado          #+#    #+#             */
-/*   Updated: 2020/02/07 22:54:48 by iguidado         ###   ########.fr       */
+/*   Created: 2020/12/21 15:53:34 by iguidado          #+#    #+#             */
+/*   Updated: 2020/12/21 15:53:36 by iguidado         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#ifndef GET_NEXT_LINE_H
 
-void	ft_print_iarray(int *array, int size)
-{
-	int i;
+# include <stdlib.h>
+# include <unistd.h>
+# ifndef	BUFF_SIZE
+#  define BUFF_SIZE 8
+# endif
 
-	i = 0;
-	while (i < size)
-	{
-		ft_putnbr(array[i]);
-		if (!(i % 10) && i)
-			ft_putchar('\n');
-		else
-			ft_putchar(' ');
-		i++;
-	}
-}
+int		ft_mv_buff(char *buff);
+char	*ft_buffdup(char *buff);
+char	*ft_linecat(char *line, char *buff);
+int		ft_dump_buff(char **line, char *buff);
+int		get_next_line(int fd, char **line);
+
+#endif

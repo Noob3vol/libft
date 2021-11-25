@@ -1,24 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putendl.c                                       :+:      :+:    :+:   */
+/*   ft_print_iarray.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: iguidado <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/02/07 22:59:08 by iguidado          #+#    #+#             */
-/*   Updated: 2021/08/04 20:16:07 by iguidado         ###   ########.fr       */
+/*   Created: 2020/02/07 22:40:26 by iguidado          #+#    #+#             */
+/*   Updated: 2021/10/28 23:49:58 by iguidado         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <unistd.h>
+#include "libft.h"
 
-void	ft_putendl(char const *s)
+void	ft_print_array(int *array, int size)
 {
 	int i;
 
 	i = 0;
-	while (s[i])
+	while (i < size)
+	{
+		ft_putnbr(array[i]);
+		if (!(i % 10) && i)
+			ft_putchar('\n');
+		else
+			ft_putchar(' ');
 		i++;
-	write(1, s, i);
-	write(1, "\n", 1);
+	}
 }
