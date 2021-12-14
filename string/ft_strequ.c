@@ -1,6 +1,6 @@
 #include "libft.h"
 
-bool	ft_strequ(char *str_ref, char *str)
+t_bool	ft_strequ(char *str_ref, char *str)
 {
 	if (str_ref == str)
 		return (1);

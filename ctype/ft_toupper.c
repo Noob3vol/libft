@@ -6,17 +6,19 @@
 /*   By: iguidado <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/05 17:16:50 by iguidado          #+#    #+#             */
-/*   Updated: 2021/11/25 07:51:48 by iguidado         ###   ########.fr       */
+/*   Updated: 2021/12/14 13:51:09 by iguidado         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 
-static int	ft_toupper_old(int c)
-{
-	if (c >= 'a' && c <= 'z')
-		c = c - ('a' - 'A');
-	return (c);
-}
+/*
+**	static int	ft_toupper_old(int c)
+**	{
+**		if (c >= 'a' && c <= 'z')
+**			c = c - ('a' - 'A');
+**		return (c);
+**	}
+*/
 
 int	ft_toupper(int c)
 {
