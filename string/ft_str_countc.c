@@ -1,20 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   compute_int_max.c                                  :+:      :+:    :+:   */
+/*   ft_str_countc.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: iguidado <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/11/20 04:10:38 by iguidado          #+#    #+#             */
-/*   Updated: 2021/11/20 04:10:58 by iguidado         ###   ########.fr       */
+/*   Created: 2021/11/30 23:55:22 by iguidado          #+#    #+#             */
+/*   Updated: 2021/12/19 13:46:30 by iguidado         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	compute_int_max(void)
-{
-	int	max;
+#include "libft.h"
 
-	max = 0;
-	max = (~max) ^ (1 << (sizeof(int) * 8 - 1));
-	return (max);
+int	ft_str_countc(char *str, char c)
+{
+	int	count;
+
+	count = 0;
+	if (!str)
+		return (-1);
+	while (*str)
+	{
+		if (*str == c)
+			count++;
+		str++;
+	}
+	return (count);
 }

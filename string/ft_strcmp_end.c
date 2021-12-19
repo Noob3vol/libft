@@ -1,20 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   compute_int_max.c                                  :+:      :+:    :+:   */
+/*   ft_strcmp_end.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: iguidado <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/11/20 04:10:38 by iguidado          #+#    #+#             */
-/*   Updated: 2021/11/20 04:10:58 by iguidado         ###   ########.fr       */
+/*   Created: 2021/11/26 17:26:03 by iguidado          #+#    #+#             */
+/*   Updated: 2021/12/19 13:47:11 by iguidado         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	compute_int_max(void)
-{
-	int	max;
+#include "libft.h"
 
-	max = 0;
-	max = (~max) ^ (1 << (sizeof(int) * 8 - 1));
-	return (max);
+int	ft_strcmp_end(char *str, char *end)
+{
+	int	i;
+	int	j;
+
+	i = ft_strlen(str);
+	j = ft_strlen(end);
+	while (i > 0 && j > 0 && str[i] == end[j])
+	{
+		i--;
+		j--;
+	}
+	return (str[i] - end[j]);
 }

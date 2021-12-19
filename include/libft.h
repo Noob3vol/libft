@@ -6,7 +6,7 @@
 /*   By: iguidado <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/19 14:38:45 by iguidado          #+#    #+#             */
-/*   Updated: 2021/11/25 07:26:42 by iguidado         ###   ########.fr       */
+/*   Updated: 2021/11/04 03:38:23 by iguidado         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -165,10 +165,6 @@ int						ft_abs(int nbr);
 ** Type utils
 */
 int						compute_int_max(void);
-
-/*
-** 
-*/
 
 /*
 **	char		*ft_strcpy(char *dest, char *src);
