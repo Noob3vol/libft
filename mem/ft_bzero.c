@@ -6,7 +6,7 @@
 /*   By: iguidado <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/05 13:37:29 by iguidado          #+#    #+#             */
-/*   Updated: 2021/11/19 16:33:35 by iguidado         ###   ########.fr       */
+/*   Updated: 2021/12/19 14:12:36 by iguidado         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,13 +14,17 @@
 
 void	ft_bzero(void *s, size_t n)
 {
-	unsigned char	*s_cpy;
+	unsigned long	*longword_ptr;
+	unsigned int	i;
 
-	s_cpy = (unsigned char *)s;
-	while (n)
+	i = -1;
+	while (++i < n % 8)
+		((unsigned char *)s)[i] = 0;
+	longword_ptr = (unsigned long *)(s + i);
+	while (i < n)
 	{
-		*s_cpy = 0;
-		s_cpy++;
-		n--;
+		*longword_ptr = 0;
+		longword_ptr++;
+		i += 8;
 	}
 }
