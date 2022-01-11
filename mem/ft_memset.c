@@ -6,7 +6,7 @@
 /*   By: iguidado <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/05 13:29:01 by iguidado          #+#    #+#             */
-/*   Updated: 2021/12/19 14:12:27 by iguidado         ###   ########.fr       */
+/*   Updated: 2022/01/11 02:31:46 by iguidado         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ void	*ft_memset(void *ptr, int c, size_t n)
 	magicbit = (~0UL / 255) * (unsigned char)c;
 	i = -1;
 	while (++i < n % 8)
-		((unsigned char*)ptr)[i] = ch;
+		((unsigned char *)ptr)[i] = ch;
 	longword_ptr = (unsigned long *)(ptr + i);
 	while (i < n)
 	{
@@ -32,7 +32,6 @@ void	*ft_memset(void *ptr, int c, size_t n)
 	}
 	return (ptr);
 }
-
 
 /*
  **	void	*ft_memset(void *b, int c, size_t len)
