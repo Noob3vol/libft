@@ -6,7 +6,7 @@
 /*   By: iguidado <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/19 14:38:45 by iguidado          #+#    #+#             */
-/*   Updated: 2021/11/04 03:38:23 by iguidado         ###   ########.fr       */
+/*   Updated: 2022/03/03 18:06:51 by iguidado         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,8 @@
 # include <string.h>
 # include <unistd.h>
 # include <stdlib.h>
+# include <stdbool.h>
 
-typedef char	t_bool;
 /*
 **	Fonction memoire brut
 */
@@ -53,7 +53,7 @@ int						ft_strncmp(const char *s1, const char *s2, size_t n);
 char					*ft_strnstr(const char *haystack, const char *needle,
 							size_t len);
 int						ft_strindex(const char *str, int c);
-t_bool					ft_strequ(char *str_ref, char *str);
+bool					ft_strequ(char *str_ref, char *str);
 
 /*
 **	String modification
@@ -149,6 +149,7 @@ void					ft_lstiter(t_list *lst, void (*f)(void *));
 t_list					*ft_lstmap(t_list *lst,
 							void *(*f)(void *), void (*del)(void *));
 int						ft_lstlen(t_list *lst);
+bool					ft_lst_checkloop(t_list *lst);
 
 /*
 **	Input

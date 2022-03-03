@@ -6,7 +6,7 @@
 #    By: iguidado <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/11/18 11:15:40 by iguidado          #+#    #+#              #
-#    Updated: 2021/11/21 18:10:50 by iguidado         ###   ########.fr        #
+#    Updated: 2022/03/03 18:07:15 by iguidado         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -90,7 +90,8 @@ S_LST =		ft_lstnew.c \
 		ft_lstclear.c \
 		ft_lstmap.c \
 		ft_lstlen.c \
-		ft_lstiter.c 
+		ft_lstiter.c \
+		ft_lst_checkloop.c
 
 S_TAB	=	ft_print_tab.c\
 			ft_free_tab.c
